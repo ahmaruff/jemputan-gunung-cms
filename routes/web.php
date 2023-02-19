@@ -17,4 +17,19 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/',['\App\Http\Controllers\Home\HomeController','index']);
+Route::get('/',[\App\Http\Controllers\Home\HomeController::class, 'index']);
+
+// AUTH --------------------------------------------------------------
+Route::get('/login/admin', [App\Http\Controllers\Auth\LoginController::class, 'adminLoginView']);
+Route::post('/login/admin', [App\Http\Controllers\Auth\LoginController::class, 'adminLoginAction'])->name('login');
+
+Route::get('/register/admin', [App\Http\Controllers\Auth\RegisterController::class, 'adminRegisterView']);
+Route::post('/register/admin', [App\Http\Controllers\Auth\RegisterController::class, 'adminRegisterAction']);
+
+Route::get('/logout', [\App\Http\Controllers\Auth\LogoutController::class, 'logout'])->name('logout');
+
+
+// ADMIN --------------------------------------------------------------
+Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function() {
+    Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin-dashboard');
+});

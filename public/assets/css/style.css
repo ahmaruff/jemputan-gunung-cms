@@ -1,0 +1,79 @@
+.jumbotron {
+  position: relative;
+  width: auto;
+  background-color: rgba(0, 0, 0, 0.4901960784);
+  background: url("/assets/images/bg-jumbotron.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    height: 100vh;
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+}
+
+.jumbotron::before {
+  content: "";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4901960784);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+.showcase .showcase-text {
+  padding: 3rem;
+}
+@media (min-width: 768px) {
+  .showcase .showcase-text {
+    padding: 7rem;
+  }
+}
+.showcase .showcase-img {
+  min-height: 30rem;
+  background-size: cover;
+}
+
+.home-card-trip {
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+}
+.home-card-trip .center-line {
+  height: 40px;
+  width: 100%;
+  margin: 0 20px !important;
+  padding: 0 !important;
+}
+.home-card-trip .center-line::after {
+  content: "";
+  display: block;
+  padding-top: 19px;
+  border-bottom: 2px solid #555555;
+}
+
+.call-to-action {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.4901960784);
+  background: url("/assets/images/bg-jumbotron.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.call-to-action:before {
+  content: "";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4901960784);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -85,33 +85,24 @@
         <div class="container">
             <h1 class="display-5 text-center mb-5">Jadwal Trip Terbaru</h1>
             <div class="d-flex gap-5 flex-wrap justify-content-center align-items-center">
+                @foreach ($paket as $item)
                 <div class="card border-0 shadow-sm" style="width: 18rem;">
                     <div class="card-img-top" style="background-image: url('/assets/images/bg-sh-1.jpg'); height: 180px; background-size: cover;"></div>
                     {{-- <img src=".." class="card-img-top" alt="..."> --}}
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title mb-0">{{ $item->judul }}</h5>
+                        <p class="text-success mb-1">IDR. {{ $item->harga }}/pax</p>
+                        <p class="card-text">{{ $item->deskripsi }}</p>
+                        <p class="m-0 fw-bold">Destinasi:</p>
+                        <ul>
+                        @foreach ($item->destinasi as $destinasi)
+                            <li>{{ $destinasi->nama }}</li>    
+                        @endforeach
+                        </ul>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
-                <div class="card border-0 shadow-sm" style="width: 18rem;">
-                    <div class="card-img-top" style="background-image: url('/assets/images/bg-sh-2.jpg'); height: 180px; background-size: cover;"></div>
-                    {{-- <img src=".." class="card-img-top" alt="..."> --}}
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-sm" style="width: 18rem;">
-                    <div class="card-img-top" style="background-image: url('/assets/images/bg-sh-5.jpg'); height: 180px; background-size: cover;"></div>
-                    {{-- <img src=".." class="card-img-top" alt="..."> --}}
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <div class="text-center mt-5 d-flex no-wrap">

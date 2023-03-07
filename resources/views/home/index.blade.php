@@ -6,6 +6,9 @@
 
 @section('content')
     <header class="jumbotron">
+        <div class="navigation">
+            @include('home.layouts.header-trns')
+        </div>
         <div class="container position-relative">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -107,7 +110,7 @@
         </div>
         <div class="text-center mt-5 d-flex no-wrap">
             <div class="center-line"></div>
-            <a href="#" class="btn btn-outline-secondary text-nowrap">More trip</a>
+            <a href="/trip" class="btn btn-outline-secondary text-nowrap">More trip</a>
             <div class="center-line"></div>
         </div>
     </section>

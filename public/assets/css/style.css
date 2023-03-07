@@ -4,14 +4,23 @@
   background-color: rgba(0, 0, 0, 0.4901960784);
   background: url("/assets/images/bg-jumbotron.jpg") no-repeat center center;
   background-size: cover;
-  padding-top: 8rem;
+  padding-top: 0;
   padding-bottom: 8rem;
 }
 @media (min-width: 768px) {
   .jumbotron {
     height: 100vh;
-    padding-top: 12rem;
+    padding-top: 0;
     padding-bottom: 12rem;
+  }
+}
+.jumbotron .navigation {
+  margin-bottom: 8rem;
+  background-color: rgba(0, 0, 0, 0.0666666667);
+}
+@media (min-width: 768px) {
+  .jumbotron .navigation {
+    margin-bottom: 12rem;
   }
 }
 

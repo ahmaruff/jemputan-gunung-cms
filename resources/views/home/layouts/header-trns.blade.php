@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white px-4">
+<nav class="navbar navbar-expand-md navbar-dark px-4">
     <div class="container-fluid py-1">
         <a class="navbar-brand" href="#"><img src="/assets/images/logo.png" class="img-fluid" width="45" alt="Logo"><span class="fw-bold ms-2 me-4 d-none d-sm-none d-md-inline">Jemputan Gunung</span></a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHome" aria-controls="navbarHome" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
                     <a class="btn btn-outline-primary" href="/blog">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-dark" href="/bantuan">Bantuan</a>
+                    <a class="btn btn-outline-light" href="/bantuan">Bantuan</a>
                 </li>
             </ul>
         </div>

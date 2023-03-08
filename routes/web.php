@@ -39,4 +39,6 @@ Route::get('/logout', [\App\Http\Controllers\Auth\LogoutController::class, 'logo
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function() {
     Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('admin-dashboard');
     Route::get('/trip',[App\Http\Controllers\Admin\TripController::class, 'index'])->name('admin-trip');
+    Route::get('/trip/destinasi',[App\Http\Controllers\Admin\TripController::class, 'destinasiIndex']);
+    Route::get('/trip/fasilitas',[App\Http\Controllers\Admin\TripController::class, 'fasilitasIndex']);
 });

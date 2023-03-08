@@ -9,6 +9,10 @@
     </style>
 @endsection
 
+@section('title')
+    Trip - JG
+@endsection
+
 @section('page-header')
 <div class="mb-1">
     <ol class="breadcrumb" aria-label="breadcrumbs">
@@ -102,9 +106,9 @@
                                     <td class="durasi">{{ $item->durasi }}</td>
                                     <td class="destinasi">
                                         <ul class="m-0">
-                                            @foreach ($item->destinasi as $destinasi)
-                                            <li class="m-0">{{ $destinasi->nama }}</li>                                            
-                                        @endforeach
+                                            @foreach ($item->destinasi as $des)
+                                            <li class="m-0">{{ $des->nama }}</li>                                            
+                                            @endforeach
                                         </ul>   
                                     </td>
                                     <td>
@@ -138,14 +142,50 @@
         </div>
     </div>
 </div>
+
+{{-- di load disini karean section dibawah butuh inisiasi list.js terlebih dahulu SEE @INCLUDE--}}
 <script src="/assets/libs/listjs-2.3.1/list.min.js"></script>
+
+<div class="row row-deck row-cards my-2">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs">
+                    <li class="nav-item">
+                        <a href="#tab-destinasi" class="nav-link active" data-bs-toggle="tab">
+                            <i class="bi bi-compass me-2"></i>
+                            Destinasi
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tab-fasilitas" class="nav-link" data-bs-toggle="tab">
+                            <i class="bi bi-box-seam me-2"></i>
+                            Fasilitas
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane active show" id="tab-destinasi">
+                        @include('admin.partials.destinasi')
+                    </div>
+                    <div class="tab-pane" id="tab-fasilitas">
+                        @include('admin.partials.fasilitas')
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
-    var options = {
+    var tripOptions = {
         valueNames: ['id','judul', 'penjemputan', 'durasi', 'harga', 'minimal'],
         page: 30,
         pagination: true,
     }
 
-    var tripList = new List('trip-list', options);
+    var tripList = new List('trip-list', tripOptions);  
 </script>
 @endsection

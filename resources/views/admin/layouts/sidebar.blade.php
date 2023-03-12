@@ -8,11 +8,11 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="/admin/profile" class="nav-link">
+        <a href="/admin/account" class="nav-link">
             <span class="nav-link-icon d-md-none d-lg-inline-block">
                 <i class="bi bi-person-fill"></i>
             </span>
-            <span class="nav-link-title">Profile</span>
+            <span class="nav-link-title">Admin Account</span>
         </a>
     </li>
     <li class="nav-item dropdown">

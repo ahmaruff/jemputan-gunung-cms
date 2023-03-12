@@ -40,6 +40,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function() {
     Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('admin-dashboard');
     Route::get('/profile', [App\Http\Controllers\Admin\AdminController::class,'profile']);
     Route::put('/profile', [App\Http\Controllers\Admin\AdminController::class,'profileUpdateAction']);
+
+    Route::get('/account', [App\Http\Controllers\Admin\AccountController::class,'index']);
+    Route::get('/account/create', [App\Http\Controllers\Admin\AccountController::class,'create']);
+    Route::post('/account/create', [App\Http\Controllers\Admin\AccountController::class,'store']);
+    Route::get('/account/{id}', [App\Http\Controllers\Admin\AccountController::class,'show'])->whereNumber('id');
+    Route::put('/account/{id}', [App\Http\Controllers\Admin\AccountController::class,'update'])->whereNumber('id');
+    Route::get('/account/{id}/delete', [App\Http\Controllers\Admin\AccountController::class,'destroy'])->whereNumber('id');
+
     Route::get('/trip',[App\Http\Controllers\Admin\TripController::class, 'index'])->name('admin-trip');
     Route::get('/trip/destinasi',[App\Http\Controllers\Admin\TripController::class, 'destinasiIndex']);
     Route::get('/trip/fasilitas',[App\Http\Controllers\Admin\TripController::class, 'fasilitasIndex']);

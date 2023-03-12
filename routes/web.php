@@ -49,6 +49,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function() {
     Route::get('/account/{id}/delete', [App\Http\Controllers\Admin\AccountController::class,'destroy'])->whereNumber('id');
 
     Route::get('/trip',[App\Http\Controllers\Admin\TripController::class, 'index'])->name('admin-trip');
-    Route::get('/trip/destinasi',[App\Http\Controllers\Admin\TripController::class, 'destinasiIndex']);
-    Route::get('/trip/fasilitas',[App\Http\Controllers\Admin\TripController::class, 'fasilitasIndex']);
+    Route::get('/trip/destinasi',[App\Http\Controllers\Admin\TripDestinasiController::class, 'index']);
+    Route::get('/trip/fasilitas',[App\Http\Controllers\Admin\TripFasilitasController::class, 'index']);
 });

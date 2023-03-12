@@ -35,7 +35,7 @@ class TripController extends Controller
             'jml_fasilitas' => $jml_fasilitas,
         ];
 
-        return view('admin.trip', $data);
+        return view('admin.trip.index', $data);
     }
 
     public function show()
@@ -46,35 +46,6 @@ class TripController extends Controller
             'email' => $user->email,
         ];
 
-        return view('admin.trip-detail', $data);
-    }
-
-    public function fasilitasIndex()
-    {
-        $user = Auth::user();
-        $fasilitas = Fasilitas::all();
-
-        $data = [
-            'nama' => $user->nama,
-            'email' => $user->email,
-            'fasilitas' => $fasilitas,
-        ];
-        
-        return view('admin.fasilitas', $data);
-    }
-    
-    
-    public function destinasiIndex()
-    {
-        $user = Auth::user();
-        $destinasi = Destinasi::all();
-
-        $data = [
-            'nama' => $user->nama,
-            'email' => $user->email,
-            'destinasi' => $destinasi,
-        ];
-
-        return view('admin.destinasi', $data);
+        return view('admin.trip.trip-detail', $data);
     }
 }

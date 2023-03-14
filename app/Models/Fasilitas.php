@@ -9,6 +9,11 @@ class Fasilitas extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nama',
+        'keterangan',
+    ];
+
     public function paket()
     {
         return $this->belongsToMany(Paket::class);

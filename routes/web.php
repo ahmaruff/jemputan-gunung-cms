@@ -50,15 +50,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function() {
 
     Route::get('/trip',[App\Http\Controllers\Admin\TripController::class, 'index'])->name('admin-trip');
 
-    Route::get('/trip/destinasi',[App\Http\Controllers\Admin\TripDestinasiController::class, 'index']);
-    Route::get('/trip/destinasi/create',[App\Http\Controllers\Admin\TripDestinasiController::class, 'create']);
-    Route::post('/trip/destinasi/create',[App\Http\Controllers\Admin\TripDestinasiController::class, 'store'])->name('store-destinasi');
-    Route::get('/trip/destinasi/{id}',[App\Http\Controllers\Admin\TripDestinasiController::class, 'show'])->whereNumber('id');
-    Route::put('/trip/destinasi/{id}',[App\Http\Controllers\Admin\TripDestinasiController::class, 'update'])->whereNumber('id');
-    Route::get('/trip/destinasi/{id}/edit',[App\Http\Controllers\Admin\TripDestinasiController::class, 'show'])->whereNumber('id');
-    Route::put('/trip/destinasi/{id}/edit',[App\Http\Controllers\Admin\TripDestinasiController::class, 'update'])->whereNumber('id');
-    Route::get('/trip/destinasi/{id}/delete',[App\Http\Controllers\Admin\TripDestinasiController::class, 'destroy'])->whereNumber('id');
-  
     Route::get('/trip/fasilitas',[App\Http\Controllers\Admin\TripFasilitasController::class, 'index']);
     Route::get('/trip/fasilitas/create',[App\Http\Controllers\Admin\TripFasilitasController::class, 'create']);
     Route::post('/trip/fasilitas/create',[App\Http\Controllers\Admin\TripFasilitasController::class, 'store'])->name('store-fasilitas');
@@ -67,5 +58,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function() {
     Route::get('/trip/fasilitas/{id}/edit',[App\Http\Controllers\Admin\TripFasilitasController::class, 'show'])->whereNumber('id');
     Route::put('/trip/fasilitas/{id}/edit',[App\Http\Controllers\Admin\TripFasilitasController::class, 'update'])->whereNumber('id');
     Route::get('/trip/fasilitas/{id}/delete',[App\Http\Controllers\Admin\TripFasilitasController::class, 'destroy'])->whereNumber('id');
+    
+    Route::get('/trip/destinasi',[App\Http\Controllers\Admin\TripDestinasiController::class, 'index']);
+    Route::get('/trip/destinasi/create',[App\Http\Controllers\Admin\TripDestinasiController::class, 'create']);
+    Route::post('/trip/destinasi/create',[App\Http\Controllers\Admin\TripDestinasiController::class, 'store'])->name('store-destinasi');
+    Route::get('/trip/destinasi/{id}',[App\Http\Controllers\Admin\TripDestinasiController::class, 'show'])->whereNumber('id');
+    Route::put('/trip/destinasi/{id}',[App\Http\Controllers\Admin\TripDestinasiController::class, 'update'])->whereNumber('id');
+    Route::get('/trip/destinasi/{id}/edit',[App\Http\Controllers\Admin\TripDestinasiController::class, 'show'])->whereNumber('id');
+    Route::put('/trip/destinasi/{id}/edit',[App\Http\Controllers\Admin\TripDestinasiController::class, 'update'])->whereNumber('id');
+    Route::get('/trip/destinasi/{id}/delete',[App\Http\Controllers\Admin\TripDestinasiController::class, 'destroy'])->whereNumber('id');
     
 });

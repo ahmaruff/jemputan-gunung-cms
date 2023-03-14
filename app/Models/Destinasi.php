@@ -9,6 +9,12 @@ class Destinasi extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nama',
+        'alamat',
+        'deskripsi',
+    ];
+
     public function paket()
     {
         return $this->belongsToMany(Paket::class);

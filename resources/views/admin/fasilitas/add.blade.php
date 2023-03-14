@@ -32,7 +32,7 @@
             <div class="card-body">
                 <h1 class="card-title">Tambah Fasilitas</h1>
                 <div>
-                    <form action="{{ route() }}" method="post">
+                    <form action="" method="post">
                         @csrf
                         <div class="mb-3 row">
                             <label class="col-sm-2 form-label" for="nama">Nama Fasilitas</label>

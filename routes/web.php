@@ -49,6 +49,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function() {
     Route::get('/account/{id}/delete', [App\Http\Controllers\Admin\AccountController::class,'destroy'])->whereNumber('id');
 
     Route::get('/trip',[App\Http\Controllers\Admin\TripController::class, 'index'])->name('admin-trip');
+    Route::get('/trip/create',[App\Http\Controllers\Admin\TripController::class, 'create']);
+    Route::post('/trip/create',[App\Http\Controllers\Admin\TripController::class, 'store']);
+    Route::get('/trip/{id}',[App\Http\Controllers\Admin\TripController::class, 'show'])->whereNumber('id');
+    Route::get('/trip/{id}/edit',[App\Http\Controllers\Admin\TripController::class, 'edit'])->whereNumber('id');
+    Route::put('/trip/{id}/edit',[App\Http\Controllers\Admin\TripController::class, 'update'])->whereNumber('id');
+    Route::get('/trip/{id}/delete',[App\Http\Controllers\Admin\TripController::class, 'destroy'])->whereNumber('id');
 
     Route::get('/trip/fasilitas',[App\Http\Controllers\Admin\TripFasilitasController::class, 'index']);
     Route::get('/trip/fasilitas/create',[App\Http\Controllers\Admin\TripFasilitasController::class, 'create']);

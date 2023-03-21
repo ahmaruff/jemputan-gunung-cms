@@ -25,4 +25,9 @@ class Paket extends Model
     {
         return $this->belongsToMany(Destinasi::class);
     }
+
+    public function fasilitas()
+    {
+        return $this->belongsToMany(Fasilitas::class);
+    }
 }

@@ -45,9 +45,14 @@ class TripController extends Controller
     public function create()
     {
         $user = Auth::user();
+
+        $fasilitas = Fasilitas::all();
+        $destinasi = Destinasi::all();
         $data = [
             'nama' => $user->nama,
             'email' => $user->email,
+            'list_fasilitas'=> $fasilitas,
+            'list_destinasi' => $destinasi,
         ];
 
         return view('admin.trip.add', $data);
@@ -66,7 +71,7 @@ class TripController extends Controller
         ];
 
         $validator = Validator::make($request->all(),$rules);
-        
+
         if($validator->fails()){
             // dd($validator->errors());
             foreach( $validator->errors()->all() as $message) {
@@ -78,35 +83,58 @@ class TripController extends Controller
         
         $validatedData = $validator->validated();
 
-        // FALIDATING FILE UPLOAD
+        // VALIDATING FILE UPLOAD
         $file_rules = [
-            'thumbnail' => ['required', File::image()->max(2048)],
+            'thumbnail' => ['sometimes', File::image()->max(2048)],
         ];
         
         $this->validate($request,$file_rules);
         
         $file = $request->file('thumbnail');
 
-        if(!$file->isValid()){
-            \toastr()->error($file->getErrorMessage());
+        if($file && !$file->isValid()){
+            \toastr()->error($file->getErrorMessage() ?: 'File Error!');
             return back()->withInput($request->all());
         }
-        // dd(Storage::disk('public'));
+
+        // FASILITAS 
+        $fasilitas = $request->post('fasilitas');
+        
+        // DESTINASI
+        $destinasi = $request->post('destinasi');
+
+        // dd($fasilitas, $destinasi);
 
         try {
             $paket = new Paket();
             $paket->fill($validatedData);
             $paket->save();
              
-            // moving files
+            // Saving files
             $file_ext = ($file->guessExtension() ?: $file->guessClientExtension());
             $thumbnail_name= $paket->id.'_thumbnail.'.$file_ext;
 
             $file->storeAs('public/trip/img',$thumbnail_name);
+            //storage/ap/public/trip/img/
 
-            // dd($thumbnail_name);
             $paket->thumbnail = $thumbnail_name;
             $paket->save();
+
+            // FASILITAS
+            foreach($fasilitas as $fas_id){
+                DB::table('fasilitas_paket')->insert([
+                    'fasilitas_id' => $fas_id,
+                    'paket_id' => $paket->id,
+                ]);
+            }
+
+            // Destinasi
+            foreach($destinasi as $des_id){
+                DB::table('destinasi_paket')->insert([
+                    'destinasi_id' => $des_id,
+                    'paket_id' => $paket->id,
+                ]);
+            }
 
             \toastr()->success('Trip berhasil ditambahkan!');
             return redirect()->to('/admin/trip');
@@ -129,9 +157,116 @@ class TripController extends Controller
         return view('admin.trip.detail', $data);
     }
 
-    public function update(Request $request)
+    public function edit($id)
     {
-        # code...
+        $user = Auth::user();
+
+        $paket = Paket::find($id);
+        $fasilitas = Fasilitas::all();
+        $destinasi = Destinasi::all();
+        $data = [
+            'nama' => $user->nama,
+            'email' => $user->email,
+            'paket' => $paket,
+            'list_fasilitas' => $fasilitas,
+            'list_destinasi' => $destinasi,
+        ];
+
+        return view('admin.trip.edit', $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        // dd($id);
+        $rules = [
+            'id'    => ['required'],
+            'judul' => ['sometimes', 'string'],
+            'deskripsi' => ['sometimes', 'string'],
+            'penjemputan' => ['sometimes', 'string'],
+            'durasi' => ['sometimes', 'string'],
+            'minimal_pax' => ['sometimes', 'integer'],
+            'harga' => ['sometimes', 'integer'],
+            'rencana_perjalanan' => ['sometimes', 'string'],
+        ];
+
+        $validator = Validator::make($request->all(),$rules);
+        
+        if($validator->fails()){
+            // dd($validator->errors());
+            foreach( $validator->errors()->all() as $message) {
+                \toastr()->error($message);
+            }
+            return back()->withInput($request->all());
+        }
+
+        
+        $validatedData = $validator->validated();
+
+        // VALIDATING FILE UPLOAD
+        $file_rules = [
+            'thumbnail' => ['sometimes', File::image()->max(2048)],
+        ];
+        
+        $this->validate($request,$file_rules);
+        
+        $file = $request->file('thumbnail');
+
+        if($file && !$file->isValid()){
+            \toastr()->error($file->getErrorMessage() ?: 'File Error!' );
+            return back()->withInput($request->all());
+        }
+
+        // FASILITAS 
+        $fasilitas = $request->post('fasilitas');
+        
+        // DESTINASI
+        $destinasi = $request->post('destinasi');
+
+        try {
+            $paket = Paket::where(['id' => $validatedData['id']])->update($validatedData);
+       
+            // Saving files
+            if($file) {
+                $file_ext = ($file->guessExtension() ?: $file->guessClientExtension());
+                $thumbnail_name= $paket->id.'_thumbnail.'.$file_ext;
+
+                $file->storeAs('public/trip/img',$thumbnail_name);
+                //storage/app/public/trip/img/
+
+                $paket = Paket::where(['id' => $validatedData['id']])->update(['thumbnail' => $thumbnail_name]);
+            }
+
+            // FASILITAS
+            if(isset($fasilitas)){
+                foreach($fasilitas as $fas_id){
+                    if(!DB::table('fasilitas_paket')->where('paket_id','=', $validatedData['id'])->where('fasilitas_id' , '=', $fas_id)->get()) {
+                        DB::table('fasilititas_paket')->insert([
+                            'fasilititas_id' => $fas_id,
+                            'paket_id' => $validatedData['id'],
+                        ]);
+                    }
+                    
+                }
+            }
+
+            // Destinasi
+            if(isset($destinasi)){
+                foreach($destinasi as $des_id){
+                    if(!DB::table('destinasi_paket')->where('paket_id','=', $validatedData['id'])->where('destinasi_id' , '=', $des_id)->get()) {
+                        DB::table('fasilititas_paket')->insert([
+                            'fasilititas_id' => $des_id,
+                            'paket_id' => $validatedData['id'],
+                        ]);
+                    }
+                }
+            }
+
+            \toastr()->success('Trip berhasil diubah!');
+            return redirect()->to('/admin/trip/'.$id);
+        } catch (QueryException $e) {
+            \toastr()->error($e->getMessage());
+            return back();
+        }
     }
 
     public function destroy($id)

@@ -23,6 +23,8 @@ Route::get('/tentang',[\App\Http\Controllers\Home\HomeController::class, 'tentan
 
 Route::group(['prefix' => 'trip'], function() {
     Route::get('/',[\App\Http\Controllers\Home\TripController::class, 'index']);
+    Route::get('/{id}',[\App\Http\Controllers\Home\TripController::class, 'show'])->whereNumber('id');
+    // Route::post('/search',[\App\Http\Controllers\Home\TripController::class, 'search']);
 });
 
 // AUTH --------------------------------------------------------------

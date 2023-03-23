@@ -21,6 +21,7 @@ Route::get('/',[\App\Http\Controllers\Home\HomeController::class, 'index']);
 Route::get('/cari',[\App\Http\Controllers\Home\HomeController::class, 'cariTrip']);
 Route::get('/kontak',[\App\Http\Controllers\Home\HomeController::class, 'kontak']);
 Route::get('/tentang',[\App\Http\Controllers\Home\HomeController::class, 'tentang']);
+Route::get('/faq',[\App\Http\Controllers\Home\HomeController::class, 'faq']);
 
 Route::group(['prefix' => 'trip'], function() {
     Route::get('/',[\App\Http\Controllers\Home\TripController::class, 'index'])->name('home.trip');
@@ -77,4 +78,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function() {
     Route::put('/trip/destinasi/{id}/edit',[App\Http\Controllers\Admin\TripDestinasiController::class, 'update'])->whereNumber('id');
     Route::get('/trip/destinasi/{id}/delete',[App\Http\Controllers\Admin\TripDestinasiController::class, 'destroy'])->whereNumber('id');
     
+    Route::resource('faq',App\Http\Controllers\Admin\FaqController::class);
 });

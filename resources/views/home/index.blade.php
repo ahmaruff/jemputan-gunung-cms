@@ -17,8 +17,7 @@
                         <p class="lead my-4">Jemputan Gunung hadir untuk menemani petualanganmu</p>
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-9 col-xl-7">
-                                <form action="" method="post">
-                                    @csrf
+                                <form action="/cari" method="get">
                                     <div class="row">
                                         <div class="col">
                                             <input class="form-control form-control-lg" type="text" name="cari" id="cari" placeholder="Cari trip impianmu">
@@ -90,19 +89,22 @@
             <div class="d-flex gap-5 flex-wrap justify-content-center align-items-center">
                 @foreach ($paket as $item)
                 <div class="card border-0 shadow-sm" style="width: 18rem;">
-                    <div class="card-img-top" style="background-image: url('/assets/images/bg-sh-1.jpg'); height: 180px; background-size: cover;"></div>
+                    <div class="card-img-top" style="background-image: url('{{asset('storage/trip/img/'.$item->thumbnail)}}'); height: 180px; background-size: cover;"></div>
                     {{-- <img src=".." class="card-img-top" alt="..."> --}}
                     <div class="card-body">
-                        <h5 class="card-title mb-0">{{ $item->judul }}</h5>
-                        <p class="text-success mb-1">IDR. {{ $item->harga }}/pax</p>
-                        <p class="card-text">{{ $item->deskripsi }}</p>
+                        <h3 class="card-tit mb-0">{{ $item->judul }}</h3>
+                        <p class="text-success mb-1 fw-bold">IDR. {{ $item->harga }}/pax</p>
+                        <p class="card-text text-muted text-truncate">{{ $item->deskripsi }}</p>
                         <p class="m-0 fw-bold">Destinasi:</p>
                         <ul>
                         @foreach ($item->destinasi as $destinasi)
                             <li>{{ $destinasi->nama }}</li>    
                         @endforeach
                         </ul>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                       <div class="d-flex gap-3">
+                            <a href="/trip/{{$item->id}}" class="btn btn-outline-primary">Detail</a>
+                            <a href="#" class="btn btn-success">Pesan Sekarang!</a>
+                       </div>
                     </div>
                 </div>
                 @endforeach

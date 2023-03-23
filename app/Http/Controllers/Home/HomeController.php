@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
    public function index()
    {
-      $paket = Paket::all(['id','judul', 'deskripsi','durasi','penjemputan','harga'])->sortByDesc('id')->take(3);
+      $paket = Paket::all()->sortByDesc('id')->take(3);
       // dd($paket);  
       $data = [
          'title'  => 'Jemputan Gunung',
@@ -18,6 +18,11 @@ class HomeController extends Controller
       ];
 
       return view('home.index',$data);
+   }
+
+   public function cariTrip(Request $request)
+   {
+      return redirect()->route('home.trip',['judul' => $request->cari]);
    }
 
    public function kontak()

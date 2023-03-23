@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
 use App\Models\Paket;
 use Illuminate\Http\Request;
 
@@ -41,6 +42,17 @@ class HomeController extends Controller
       ];
 
       return view('home.tentang', $data);
+   }
+
+   public function faq()
+   {
+      $faq = Faq::orderBy('tanggal', 'DESC')->get();
+      
+      $data =[
+         'faq' => $faq,
+      ];
+
+      return view('home.faq', $data);
    }
 
    public function sendMail(Request $request)

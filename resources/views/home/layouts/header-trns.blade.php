@@ -33,7 +33,7 @@
                     <a class="btn btn-outline-primary" href="/blog">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-light" href="/bantuan">Bantuan</a>
+                    <a class="btn btn-outline-light" href="/faq">FAQ</a>
                 </li>
             </ul>
         </div>

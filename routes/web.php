@@ -79,4 +79,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function() {
     Route::get('/trip/destinasi/{id}/delete',[App\Http\Controllers\Admin\TripDestinasiController::class, 'destroy'])->whereNumber('id');
     
     Route::resource('faq',App\Http\Controllers\Admin\FaqController::class);
+
+    Route::group(['prefix' => 'blog'], function(){
+        Route::get('/', [\App\Http\Controllers\Admin\BlogController::class, 'index'])->name('blog.home');
+        Route::resource('category', App\Http\Controllers\Admin\BlogCategoryController::class);
+    });
 });

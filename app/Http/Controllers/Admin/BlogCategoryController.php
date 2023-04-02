@@ -19,7 +19,7 @@ class BlogCategoryController extends Controller
      */
     public function index()
     {
-       //
+        return redirect(route('blog.home'));
     }
 
     /**
@@ -83,7 +83,7 @@ class BlogCategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect(route('category.edit', $id));
     }
 
     /**

@@ -83,5 +83,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function() {
     Route::group(['prefix' => 'blog'], function(){
         Route::get('/', [\App\Http\Controllers\Admin\BlogController::class, 'index'])->name('blog.home');
         Route::resource('category', App\Http\Controllers\Admin\BlogCategoryController::class);
+        Route::resource('post',\App\Http\Controllers\Admin\BlogPostController::class);
     });
 });

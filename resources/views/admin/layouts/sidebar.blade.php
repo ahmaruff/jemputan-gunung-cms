@@ -58,8 +58,11 @@
                     <a class="dropdown-item" href="/admin/blog">
                         Data Blog
                     </a>
-                    <a class="dropdown-item" href="/admin/blog/create">
-                        Tambah Blog
+                    <a class="dropdown-item" href="/admin/blog/category/create">
+                        Tambah Kategori
+                    </a>
+                    <a class="dropdown-item" href="/admin/blog/post/create">
+                        Tambah Post
                     </a>
                 </div>
             </div>

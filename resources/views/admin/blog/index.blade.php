@@ -79,7 +79,7 @@
         </div>
     </div>
 </div>
-{{-- 
+
 <div class="row row-deck row-cards my-2">
     <div class="col">
         <div class="card" id="post-list">
@@ -93,6 +93,7 @@
                             Sort by
                         </button>
                         <div class="dropdown-menu">
+                            <button class="sort dropdown-item" data-sort="draft">Draft</button>
                             <button class="sort dropdown-item" data-sort="tanggal">Tanggal</button>
                             <button class="sort dropdown-item" data-sort="category">Kategori</button>
                             <button class="sort dropdown-item" data-sort="judul">Judul</button>
@@ -110,6 +111,8 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Draft</th>
+                                <th>Tanggal</th>
                                 <th>Kategori</th>
                                 <th>Judul</th>
                                 <th>Action</th>
@@ -119,9 +122,10 @@
                             @foreach ($posts as $post)
                                 <tr>
                                     <td class="id">{{ $post->id }}</td>
-                                    <td class="tanggal">{{ $post->tanggal }}</td>
-                                    <td class="category">{{ $post->category }}</td>
-                                    <td class="judul">{{ $post->judul }}</td>
+                                    <td class="draft">{{ $post->draft }}</td>
+                                    <td class="date">{{ $post->date }}</td>
+                                    <td class="category">{{ $post->category->category}}</td>
+                                    <td class="judul">{{ $post->title }}</td>
                                     <td>
                                         <div class="btn-list">
                                             <a href="{{route('post.show', $post->id)}}" class="btn btn-primary btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat">
@@ -151,13 +155,13 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 
 <script src="/assets/libs/listjs-2.3.1/list.min.js"></script>
 <script>
     var categoryOptions = {
         valueNames: ['id','category'],
-        page: 5,
+        page: 4,
         pagination: true,
     }
 

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('date');
             $table->text('content_html');
             $table->json('content_delta');
-            $table->enum('draft', ['true', 'false']);
+            $table->boolean('draft')->default(true);
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('blog_categories');
         });

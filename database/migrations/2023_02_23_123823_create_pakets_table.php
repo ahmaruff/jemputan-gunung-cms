@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('deskripsi')->nullable();
             $table->string('durasi');
             $table->string('rencana_perjalanan')->nullable();
-            $table->float('harga',14,2);
+            $table->integer('harga');
             $table->integer('minimal_pax');
             $table->timestamps();
         });

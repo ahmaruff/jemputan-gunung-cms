@@ -67,6 +67,13 @@ class BlogPostController extends Controller
         $validatedData = $validator->validated();
         // dd($validatedData);
 
+        //SET DRAFT value (default: true)
+        $validatedData['draft'] = true;
+
+        if($validatedData['draft'] == 'false') {
+            $validatedData['draft'] = false;
+        }
+
         $slug = Str::slug($validatedData['title']);
         $validatedData['slug'] = $slug;
 
@@ -149,6 +156,12 @@ class BlogPostController extends Controller
 
         $validatedData = $validator->validated();
         // dd($validatedData);
+
+        if($validatedData['draft'] == "false") {
+            $validatedData['draft'] = false;
+        } else {
+            $validatedData['draft'] = true;
+        }
 
         $slug = Str::slug($validatedData['title']);
         $validatedData['slug'] = $slug;

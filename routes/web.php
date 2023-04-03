@@ -29,6 +29,22 @@ Route::group(['prefix' => 'trip'], function() {
     // Route::post('/search',[\App\Http\Controllers\Home\TripController::class, 'search']);
 });
 
+// BLOG --------------------------------------------------------------
+Route::get('/blog', [\App\Http\Controllers\Home\BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{category}', [\App\Http\Controllers\Home\BlogController::class, 'category'])->where(['category' => '^[a-z0-9]+(?:-[a-z0-9]+)*$',])->name('blog.category');
+
+// Redirect to blog (lihat route atasnya)
+Route::get('/blog/{category}/{num}', function( String $category, $id) {
+    return redirect()->to(route('blog.category', $category));
+})->where(['category' => '^[a-z0-9]+(?:-[a-z0-9]+)*$','num' => '[0-9]+']);
+
+// BLOG POST USING SLUG & VALIDATE WITH REGEX
+Route::get('/blog/{category}/{id}/{slug}', [\App\Http\Controllers\Home\BlogController::class, 'show'])->where([
+    'category'  => '^[a-z0-9]+(?:-[a-z0-9]+)*$',
+    'slug'      => '^[a-z0-9]+(?:-[a-z0-9]+)*$',
+    'id'        => '[0-9]+'])
+    ->name('blog.show');
+
 // AUTH --------------------------------------------------------------
 Route::get('/login/admin', [\App\Http\Controllers\Auth\LoginController::class, 'adminLoginView']);
 Route::post('/login/admin', [\App\Http\Controllers\Auth\LoginController::class, 'adminLoginAction'])->name('login');

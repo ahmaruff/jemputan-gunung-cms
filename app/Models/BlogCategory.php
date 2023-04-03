@@ -11,6 +11,7 @@ class BlogCategory extends Model
 
     protected $fillable = [
         'category',
+        'slug',
     ];
 
     public function post()

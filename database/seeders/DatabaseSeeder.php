@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,13 +30,22 @@ class DatabaseSeeder extends Seeder
 
         // CATEGORY
         $dataCategory = [
-            [ 'category' => 'Tips & trik' ],
-            [ 'category' => 'Info Wisata' ],
-            [ 'category' => 'Uncategorized' ],
+            [
+                'category' => 'Tips & trik',
+                'slug'  => Str::slug('Tips & trik'),
+            ],
+            [
+                'category' => 'Info Wisata',
+                'slug'  => Str::slug('Info Wisata'),
+            ],
+            [
+                'category' => 'Uncategorized',
+                'slug'  => Str::slug('Uncategorized'),
+            ],
         ];
 
-        foreach($dataCategory as $d) {
-            DB::table('blog_categories')->insert($d);
+        foreach($dataCategory as $cat) {
+            DB::table('blog_categories')->insert($cat);
         }
 
         // FASILITAS

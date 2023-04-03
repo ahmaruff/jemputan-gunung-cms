@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 
 class BlogCategoryController extends Controller
@@ -63,6 +64,7 @@ class BlogCategoryController extends Controller
 
         $validatedData = $validator->validated();
         // dd($validatedData);
+        $validatedData['slug'] = Str::slug($validatedData['category']);
 
         try {
             $isCreated = BlogCategory::create($validatedData);
@@ -130,6 +132,7 @@ class BlogCategoryController extends Controller
 
         $validatedData = $validator->validated();
         // dd($validatedData);
+        $validatedData['slug'] = Str::slug($validatedData['category']);
 
         try {
             $isUpdated = $category->update($validatedData);

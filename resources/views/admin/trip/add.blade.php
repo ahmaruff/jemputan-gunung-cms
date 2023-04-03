@@ -73,7 +73,7 @@
                                 <div class="row align-items-center">
                                     <label class="col-sm-12 col-md-4 form-label" for="minimal_pax">Minimal Pax</label>
                                     <div class="col">
-                                        <select class="form-select" aria-label="Minimal Pax" name="minimal_pax">
+                                        <select class="form-select" aria-label="Minimal Pax" name="minimal_pax" required>
                                             <option selected="">Open this select menu</option>
                                             <option value="1">1 Orang</option>
                                             <option value="2">2 Orang</option>
@@ -92,7 +92,7 @@
                                             <span class="input-group-text">
                                               Rp.
                                             </span>
-                                            <input type="text" class="form-control" placeholder="Harga satuan" name="harga" autocomplete="off">
+                                            <input type="text" class="form-control" placeholder="Harga satuan" name="harga" autocomplete="off" required>
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +143,7 @@
                                             <span class="input-group-text">
                                               Https://
                                             </span>
-                                            <input type="text" class="form-control" placeholder="URL data rencana perjalanan" name="rencana_perjalanan" autocomplete="off">
+                                            <input type="text" class="form-control" placeholder="URL data rencana perjalanan" name="rencana_perjalanan" autocomplete="off" required>
                                         </div>
                                     </div>
                                 </div>

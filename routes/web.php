@@ -30,59 +30,59 @@ Route::group(['prefix' => 'trip'], function() {
 });
 
 // AUTH --------------------------------------------------------------
-Route::get('/login/admin', [App\Http\Controllers\Auth\LoginController::class, 'adminLoginView']);
-Route::post('/login/admin', [App\Http\Controllers\Auth\LoginController::class, 'adminLoginAction'])->name('login');
+Route::get('/login/admin', [\App\Http\Controllers\Auth\LoginController::class, 'adminLoginView']);
+Route::post('/login/admin', [\App\Http\Controllers\Auth\LoginController::class, 'adminLoginAction'])->name('login');
 
-Route::get('/register/admin', [App\Http\Controllers\Auth\RegisterController::class, 'adminRegisterView']);
-Route::post('/register/admin', [App\Http\Controllers\Auth\RegisterController::class, 'adminRegisterAction']);
+Route::get('/register/admin', [\App\Http\Controllers\Auth\RegisterController::class, 'adminRegisterView']);
+Route::post('/register/admin', [\App\Http\Controllers\Auth\RegisterController::class, 'adminRegisterAction']);
 
 Route::get('/logout', [\App\Http\Controllers\Auth\LogoutController::class, 'logout'])->name('logout');
 
 
 // ADMIN --------------------------------------------------------------
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function() {
-    Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('admin-dashboard');
-    Route::get('/profile', [App\Http\Controllers\Admin\AdminController::class,'profile']);
-    Route::put('/profile', [App\Http\Controllers\Admin\AdminController::class,'profileUpdateAction']);
+    Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('admin-dashboard');
+    Route::get('/profile', [\App\Http\Controllers\Admin\AdminController::class,'profile']);
+    Route::put('/profile', [\App\Http\Controllers\Admin\AdminController::class,'profileUpdateAction']);
 
-    Route::get('/account', [App\Http\Controllers\Admin\AccountController::class,'index']);
-    Route::get('/account/create', [App\Http\Controllers\Admin\AccountController::class,'create']);
-    Route::post('/account/create', [App\Http\Controllers\Admin\AccountController::class,'store']);
-    Route::get('/account/{id}', [App\Http\Controllers\Admin\AccountController::class,'show'])->whereNumber('id');
-    Route::put('/account/{id}', [App\Http\Controllers\Admin\AccountController::class,'update'])->whereNumber('id');
-    Route::get('/account/{id}/delete', [App\Http\Controllers\Admin\AccountController::class,'destroy'])->whereNumber('id');
+    Route::get('/account', [\App\Http\Controllers\Admin\AccountController::class,'index']);
+    Route::get('/account/create', [\App\Http\Controllers\Admin\AccountController::class,'create']);
+    Route::post('/account/create', [\App\Http\Controllers\Admin\AccountController::class,'store']);
+    Route::get('/account/{id}', [\App\Http\Controllers\Admin\AccountController::class,'show'])->whereNumber('id');
+    Route::put('/account/{id}', [\App\Http\Controllers\Admin\AccountController::class,'update'])->whereNumber('id');
+    Route::get('/account/{id}/delete', [\App\Http\Controllers\Admin\AccountController::class,'destroy'])->whereNumber('id');
 
-    Route::get('/trip',[App\Http\Controllers\Admin\TripController::class, 'index'])->name('admin-trip');
-    Route::get('/trip/create',[App\Http\Controllers\Admin\TripController::class, 'create']);
-    Route::post('/trip/create',[App\Http\Controllers\Admin\TripController::class, 'store']);
-    Route::get('/trip/{id}',[App\Http\Controllers\Admin\TripController::class, 'show'])->whereNumber('id');
-    Route::get('/trip/{id}/edit',[App\Http\Controllers\Admin\TripController::class, 'edit'])->whereNumber('id');
-    Route::put('/trip/{id}/edit',[App\Http\Controllers\Admin\TripController::class, 'update'])->whereNumber('id');
-    Route::get('/trip/{id}/delete',[App\Http\Controllers\Admin\TripController::class, 'destroy'])->whereNumber('id');
+    Route::get('/trip',[\App\Http\Controllers\Admin\TripController::class, 'index'])->name('admin-trip');
+    Route::get('/trip/create',[\App\Http\Controllers\Admin\TripController::class, 'create']);
+    Route::post('/trip/create',[\App\Http\Controllers\Admin\TripController::class, 'store']);
+    Route::get('/trip/{id}',[\App\Http\Controllers\Admin\TripController::class, 'show'])->whereNumber('id');
+    Route::get('/trip/{id}/edit',[\App\Http\Controllers\Admin\TripController::class, 'edit'])->whereNumber('id');
+    Route::put('/trip/{id}/edit',[\App\Http\Controllers\Admin\TripController::class, 'update'])->whereNumber('id');
+    Route::get('/trip/{id}/delete',[\App\Http\Controllers\Admin\TripController::class, 'destroy'])->whereNumber('id');
 
-    Route::get('/trip/fasilitas',[App\Http\Controllers\Admin\TripFasilitasController::class, 'index']);
-    Route::get('/trip/fasilitas/create',[App\Http\Controllers\Admin\TripFasilitasController::class, 'create']);
-    Route::post('/trip/fasilitas/create',[App\Http\Controllers\Admin\TripFasilitasController::class, 'store'])->name('store-fasilitas');
-    Route::get('/trip/fasilitas/{id}',[App\Http\Controllers\Admin\TripFasilitasController::class, 'show'])->whereNumber('id');
-    Route::put('/trip/fasilitas/{id}',[App\Http\Controllers\Admin\TripFasilitasController::class, 'update'])->whereNumber('id');
-    Route::get('/trip/fasilitas/{id}/edit',[App\Http\Controllers\Admin\TripFasilitasController::class, 'show'])->whereNumber('id');
-    Route::put('/trip/fasilitas/{id}/edit',[App\Http\Controllers\Admin\TripFasilitasController::class, 'update'])->whereNumber('id');
-    Route::get('/trip/fasilitas/{id}/delete',[App\Http\Controllers\Admin\TripFasilitasController::class, 'destroy'])->whereNumber('id');
+    Route::get('/trip/fasilitas',[\App\Http\Controllers\Admin\TripFasilitasController::class, 'index']);
+    Route::get('/trip/fasilitas/create',[\App\Http\Controllers\Admin\TripFasilitasController::class, 'create']);
+    Route::post('/trip/fasilitas/create',[\App\Http\Controllers\Admin\TripFasilitasController::class, 'store'])->name('store-fasilitas');
+    Route::get('/trip/fasilitas/{id}',[\App\Http\Controllers\Admin\TripFasilitasController::class, 'show'])->whereNumber('id');
+    Route::put('/trip/fasilitas/{id}',[\App\Http\Controllers\Admin\TripFasilitasController::class, 'update'])->whereNumber('id');
+    Route::get('/trip/fasilitas/{id}/edit',[\App\Http\Controllers\Admin\TripFasilitasController::class, 'show'])->whereNumber('id');
+    Route::put('/trip/fasilitas/{id}/edit',[\App\Http\Controllers\Admin\TripFasilitasController::class, 'update'])->whereNumber('id');
+    Route::get('/trip/fasilitas/{id}/delete',[\App\Http\Controllers\Admin\TripFasilitasController::class, 'destroy'])->whereNumber('id');
     
-    Route::get('/trip/destinasi',[App\Http\Controllers\Admin\TripDestinasiController::class, 'index']);
-    Route::get('/trip/destinasi/create',[App\Http\Controllers\Admin\TripDestinasiController::class, 'create']);
-    Route::post('/trip/destinasi/create',[App\Http\Controllers\Admin\TripDestinasiController::class, 'store'])->name('store-destinasi');
-    Route::get('/trip/destinasi/{id}',[App\Http\Controllers\Admin\TripDestinasiController::class, 'show'])->whereNumber('id');
-    Route::put('/trip/destinasi/{id}',[App\Http\Controllers\Admin\TripDestinasiController::class, 'update'])->whereNumber('id');
-    Route::get('/trip/destinasi/{id}/edit',[App\Http\Controllers\Admin\TripDestinasiController::class, 'show'])->whereNumber('id');
-    Route::put('/trip/destinasi/{id}/edit',[App\Http\Controllers\Admin\TripDestinasiController::class, 'update'])->whereNumber('id');
-    Route::get('/trip/destinasi/{id}/delete',[App\Http\Controllers\Admin\TripDestinasiController::class, 'destroy'])->whereNumber('id');
+    Route::get('/trip/destinasi',[\App\Http\Controllers\Admin\TripDestinasiController::class, 'index']);
+    Route::get('/trip/destinasi/create',[\App\Http\Controllers\Admin\TripDestinasiController::class, 'create']);
+    Route::post('/trip/destinasi/create',[\App\Http\Controllers\Admin\TripDestinasiController::class, 'store'])->name('store-destinasi');
+    Route::get('/trip/destinasi/{id}',[\App\Http\Controllers\Admin\TripDestinasiController::class, 'show'])->whereNumber('id');
+    Route::put('/trip/destinasi/{id}',[\App\Http\Controllers\Admin\TripDestinasiController::class, 'update'])->whereNumber('id');
+    Route::get('/trip/destinasi/{id}/edit',[\App\Http\Controllers\Admin\TripDestinasiController::class, 'show'])->whereNumber('id');
+    Route::put('/trip/destinasi/{id}/edit',[\App\Http\Controllers\Admin\TripDestinasiController::class, 'update'])->whereNumber('id');
+    Route::get('/trip/destinasi/{id}/delete',[\App\Http\Controllers\Admin\TripDestinasiController::class, 'destroy'])->whereNumber('id');
     
-    Route::resource('faq',App\Http\Controllers\Admin\FaqController::class);
+    Route::resource('faq',\App\Http\Controllers\Admin\FaqController::class);
 
     Route::group(['prefix' => 'blog'], function(){
         Route::get('/', [\App\Http\Controllers\Admin\BlogController::class, 'index'])->name('blog.home');
-        Route::resource('category', App\Http\Controllers\Admin\BlogCategoryController::class);
+        Route::resource('category', \App\Http\Controllers\Admin\BlogCategoryController::class);
         Route::resource('post',\App\Http\Controllers\Admin\BlogPostController::class);
     });
 });

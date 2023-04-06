@@ -50,22 +50,20 @@ class BlogController extends Controller
 
         $data = [
             'post' => $post,
-            'obf' => Str::mask($post->id,'p',0),
         ];
 
         return view('home.blog.show', $data);
     }
 
-    public function category(String $category)
+    public function category($category)
     {
-        $posts = BlogPost::whereHas('category', function(Builder $query) use ($category){
-            $query->where('slug', $category);
-        })->get();
+        $categories = BlogCategory::select('slug')->get();
+        foreach($categories as $cat){
+            if($cat->slug == $category){
+                return view('home.blog.category');
+            }
+        }
 
-        $data = [
-            'posts' => $posts,
-        ];
-
-        return view('home.blog.category', $data);
+        return abort(404);
     }
 }

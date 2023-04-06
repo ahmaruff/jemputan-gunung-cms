@@ -31,7 +31,7 @@ Route::group(['prefix' => 'trip'], function() {
 
 // BLOG --------------------------------------------------------------
 Route::get('/blog', [\App\Http\Controllers\Home\BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/{category}', [\App\Http\Controllers\Home\BlogController::class, 'category'])->where(['category' => '^[a-z0-9]+(?:-[a-z0-9]+)*$',])->name('blog.category');
+Route::get('/blog/{category}', [\App\Http\Controllers\Home\BlogController::class, 'category'])->where(['category' => '^[a-z0-9]+(?:-[a-z0-9]+)*$'])->name('blog.category');
 
 // Redirect to blog (lihat route atasnya)
 Route::get('/blog/{category}/{num}', function( String $category, $id) {

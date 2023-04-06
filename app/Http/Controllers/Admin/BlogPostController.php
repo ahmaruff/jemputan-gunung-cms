@@ -61,7 +61,7 @@ class BlogPostController extends Controller
             foreach( $validator->errors()->all() as $message) {
                 \toastr()->error($message);
             }
-            return back();
+            return back()->withInput($request->all());
         }
 
         $validatedData = $validator->validated();

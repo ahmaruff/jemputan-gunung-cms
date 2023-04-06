@@ -38,23 +38,24 @@
         <div class="row">
             <div class="six columns">
               <label for="date">Date</label>
-              <input class="u-full-width" type="date" name="date" value="<?= date('Y-m-d') ?>" required>
+              <input class="u-full-width" type="date" name="date" value="{{old('date', date('Y-m-d'))}}" required>
             </div>
             <div class="six columns">
               <label for="category">Category</label>
               <select class="u-full-width" name="category_id" required>
                 <option value="">open select menu</option>
                 @foreach ($categories as $category)
-                    <option value="{{$category->id}}">{{ $category->category }}</option>
+                    <option value="{{$category->id}}" {{(old('category_id') == $category->id) ? 'selected' : ''}}>{{ $category->category }}</option>
                 @endforeach
               </select>
             </div>
         </div>
         {{-- judul --}}
         <label for="title">Judul</label>
-        <input class="u-full-width" type="text" name="title" placeholder="judul blog" required>
+        <input class="u-full-width" type="text" name="title" value="{{old('judul')}}" placeholder="judul blog" required>
         {{-- quill content --}}
         <label for="">Content</label>
+        <div id="deltadata" data-delta="{{old('content_delta')}}"></div>
         <input type="hidden" name="content_delta">
         <input type="hidden" name="content_html">
         <div id="editor-container" style="min-height:470px; margin-bottom: 20px;">
@@ -86,6 +87,12 @@
         theme: 'snow'
     });
 
+    var dataDelta = document.querySelector('#deltadata');
+    // console.log(dataDelta.dataset.delta);
+    if(dataDelta.dataset.delta){
+        quill.setContents(JSON.parse(dataDelta.dataset.delta));
+    }
+    
     var form = document.querySelector('form');
     form.onsubmit = function() {
         // Populate hidden form on submit
@@ -98,9 +105,6 @@
 
         content_html.value = quill.root.innerHTML;
 
-        // No back end to actually submit to!
-        // alert('Open the console to see the submit data!')
-        // return false;
-    };
+    };  
 </script>    
 @endpush

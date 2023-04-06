@@ -68,7 +68,7 @@ class FaqController extends Controller
             foreach( $validator->errors()->all() as $message) {
                 \toastr()->error($message);
             }
-            return back()->withInput(['tanggal', 'pertanyaan', 'jawaban']);
+            return back()->withInput($request->all());
         }
 
         $validatedData = $validator->validated();
@@ -137,7 +137,7 @@ class FaqController extends Controller
             foreach( $validator->errors()->all() as $message) {
                 \toastr()->error($message);
             }
-            return back()->withInput(['tanggal', 'pertanyaan', 'jawaban']);
+            return back()->withInput($request->all());
         }
 
         $validatedData = $validator->validated();

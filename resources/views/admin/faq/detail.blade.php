@@ -37,19 +37,19 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 form-label" for="tanggal">Tanggal</label>
                             <div class="col">
-                                <input type="date" class="form-control" name="tanggal" value="{{$faq->tanggal}}">
+                                <input type="date" class="form-control" name="tanggal" value="{{old('tanggal', $faq->tanggal)}}">
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-sm-2 form-label" for="pertanyaan">Pertanyaan</label>
                             <div class="col">
-                                <input type="text" class="form-control" name="pertanyaan" placeholder="Pertanyaan" value="{{$faq->pertanyaan}}">
+                                <input type="text" class="form-control" name="pertanyaan" placeholder="Pertanyaan" value="{{ old('pertanyaan', $faq->pertanyaan) }}">
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-sm-2 form-label" for="jawaban">Jawaban</label>
                             <div class="col">
-                                <textarea name="jawaban" class="form-control" cols="30" rows="6">{{ $faq->jawaban }}</textarea>
+                                <textarea name="jawaban" class="form-control" cols="30" rows="6">{{ old('jawaban', $faq->jawaban) }}</textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Edit</button>

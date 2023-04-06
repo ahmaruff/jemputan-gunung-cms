@@ -67,8 +67,12 @@ class TripController extends Controller
             'durasi' => ['required', 'string'],
             'minimal_pax' => ['required', 'integer'],
             'harga' => ['required', 'integer'],
-            'rencana_perjalanan' => ['required', 'string'],
+            'rencana_perjalanan' => ['required', 'url'],
         ];
+
+        $link = parse_url($request->input('rencana_perjalanan'),PHP_URL_SCHEME) ? $request->input('rencana_perjalanan') : 'http://'.$request->input('rencana_perjalanan');
+
+        $request->merge(['rencana_perjalanan' => $link]);
 
         $validator = Validator::make($request->all(),$rules);
 
@@ -83,7 +87,8 @@ class TripController extends Controller
         
         $validatedData = $validator->validated();
 
-        // VALIDATING FILE UPLOAD
+        // dd($validatedData);
+      
         $file_rules = [
             'thumbnail' => ['sometimes', File::image()->max(2048)],
         ];
@@ -188,6 +193,11 @@ class TripController extends Controller
             'harga' => ['sometimes', 'integer'],
             'rencana_perjalanan' => ['sometimes', 'string'],
         ];
+
+        $link = parse_url($request->input('rencana_perjalanan'),PHP_URL_SCHEME) ? $request->input('rencana_perjalanan') : 'http://'.$request->input('rencana_perjalanan');
+
+        $request->merge(['rencana_perjalanan' => $link]);
+
 
         $validator = Validator::make($request->all(),$rules);
         

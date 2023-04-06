@@ -29,13 +29,13 @@
                         <div class="mb-3 row">
                             <label class="col-sm-2 form-label" for="judul">Judul</label>
                             <div class="col">
-                                <input type="text" class="form-control" name="judul" placeholder="Judul Trip" value="{{$paket->judul}}">
+                                <input type="text" class="form-control" name="judul" placeholder="Judul Trip" value="{{old('judul', $paket->judul)}}">
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-sm-2 form-label" for="deskripsi">Deskripsi</label>
                             <div class="col">
-                                <textarea name="deskripsi" class="form-control" rows="6" placeholder="deskripsi trip">{{$paket->deskripsi}}</textarea>
+                                <textarea name="deskripsi" class="form-control" rows="6" placeholder="deskripsi trip">{{old('deskripsi', $paket->deskripsi)}}</textarea>
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -44,7 +44,7 @@
                                     <label class="col-sm-12 col-md-4 form-label" for="penjemputan">Penjemputan</label>
                                     <div class="col">
                                         <select class="form-select" aria-label="Pilih area penjemputan" name="penjemputan">
-                                            <option selected="" value="{{$paket->judul}}">{{$paket->penjemputan}}</option>
+                                            <option selected="" value="{{old('penjemputan', $paket->penjemputan)}}">{{old('penjemputan', $paket->penjemputan)}}</option>
                                             <option value="Jabodetabek">Jabodetabek</option>
                                             <option value="Bandung">Bandung</option>
                                             <option value="Tasikmalaya">Tasikmalaya</option>
@@ -59,7 +59,7 @@
                                     <label class="col-sm-12 col-md-3 form-label" for="durasi">Durasi</label>
                                     <div class="col">
                                         <select class="form-select" aria-label="Pilih durasi" name="durasi">
-                                            <option selected="" value="{{$paket->durasi}}">{{$paket->durasi}}</option>
+                                            <option selected="" value="{{old('durasi', $paket->durasi)}}">{{old('durasi', $paket->durasi)}}</option>
                                             <option value="1 Hari">1 Hari</option>
                                             <option value="2 Hari 1 Malam">2 Hari 1 Malam</option>
                                             <option value="3 Hari 2 Malam">3 Hari 2 Malam</option>
@@ -76,7 +76,7 @@
                                     <label class="col-sm-12 col-md-4 form-label" for="minimal_pax">Minimal Pax</label>
                                     <div class="col">
                                         <select class="form-select" aria-label="Minimal Pax" name="minimal_pax">
-                                            <option selected="" value="{{$paket->minimal_pax}}">{{$paket->minimal_pax}} orang</option>
+                                            <option selected="" value="{{old('minimal_pax', $paket->minimal_pax)}}">{{old('minimal_pax', $paket->minimal_pax)}} orang</option>
                                             <option value="1">1 Orang</option>
                                             <option value="2">2 Orang</option>
                                             <option value="3">3 Orang</option>
@@ -94,7 +94,7 @@
                                             <span class="input-group-text">
                                               Rp.
                                             </span>
-                                            <input type="text" class="form-control" placeholder="Harga satuan" name="harga" autocomplete="off" value="{{$paket->harga}}">
+                                            <input type="text" class="form-control" placeholder="Harga satuan" name="harga" autocomplete="off" value="{{old('harga', $paket->harga)}}">
                                         </div>
                                     </div>
                                 </div>
@@ -146,6 +146,7 @@
                                     <label class="col-sm-12 col-md-4 form-label" for="thumbnail">Thumbnail Image</label>
                                     <div class="col">
                                         <input type="file" class="form-control" name="thumbnail">
+                                        <div class="feedback text-sm mt-1 text-muted">*maksimal ukuran file 2MB</div>
                                     </div>
                                 </div>
                             </div>
@@ -155,10 +156,11 @@
                                     <div class="col">
                                         <div class="input-group">
                                             <span class="input-group-text">
-                                              Https://
+                                              https://
                                             </span>
                                             <input type="text" class="form-control" placeholder="URL data rencana perjalanan" name="rencana_perjalanan" autocomplete="off" value="{{$paket->rencana_perjalanan}}">
                                         </div>
+                                        <div class="feedback text-sm mt-1 text-muted">*link  dokumen rencana perjalanan (google drive)</div>
                                     </div>
                                 </div>
                             </div>

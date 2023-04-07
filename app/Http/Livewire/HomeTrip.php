@@ -10,13 +10,9 @@ use App\Models\Paket;
 class HomeTrip extends Component
 {
     use WithPagination;
-    public $judul;
-    public $penjemputan;
-    public $destinasi;
+    public $search;
     public $queryString = [
-        'judul'=>['except'=>''],
-        'penjemputan'=>['except'=>''],
-        'destinasi'=>['except'=>''],
+        'search' => ['except' => ''],
     ];
     protected $paginationTheme = 'bootstrap';
 
@@ -27,19 +23,16 @@ class HomeTrip extends Component
     {
         $paket = Paket::query();
 
-        if($this->judul){
-            $paket->where('judul', 'like', '%'.$this->judul.'%');
-        }
-
-        if($this->penjemputan){
-            $paket->where('penjemputan', 'like', $this->penjemputan);
-        }
-
-        if($this->destinasi){
-            $paket->whereHas('destinasi', function($query){
-                $query->where('destinasis.id', $this->destinasi);
+        if($this->search) {
+            $paket->where('judul', 'like', '%'.$this->search.'%')
+            ->orWhere('penjemputan', 'like', '%'.$this->search.'%')
+            ->orWhere('harga', 'like', '%'.$this->search.'%' )
+            ->orWhere('durasi', 'like', '%'.$this->search.'%' )
+            ->orWhereHas('destinasi', function($query){
+                $query->where('nama', 'like', '%'.$this->search.'%');
             });
         }
+
 
         // $paket->paginate(2);
 

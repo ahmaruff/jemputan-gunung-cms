@@ -103,7 +103,7 @@
                         </ul>
                        <div class="d-flex gap-3">
                             <a href="/trip/{{$item->id}}" class="btn btn-outline-primary">Detail</a>
-                            <a href="#" class="btn btn-success">Pesan Sekarang!</a>
+                            <a href="https://api.whatsapp.com/send/?phone=6289613268434&text=Halo%20Admin%20Jemputan%20Gunung!%2C%0Asaya%20ingin%20memesan%20paket%20trip%20{{ urlencode(url("/trip/$item->id")) }}%0A&type=phone_number&app_absent=0" target='_blank' class="btn btn-success">Pesan Sekarang!</a>
                        </div>
                     </div>
                 </div>

@@ -23,7 +23,7 @@ class HomeController extends Controller
 
    public function cariTrip(Request $request)
    {
-      return redirect()->route('home.trip',['judul' => $request->cari]);
+      return redirect()->route('home.trip',['search' => $request->cari]);
    }
 
    public function kontak()

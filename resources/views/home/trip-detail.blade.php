@@ -50,7 +50,7 @@
                                 <a href="{{$paket->rencana_perjalanan}}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-lg">Unduh Rencana Perjalanan</a>
                             </div>
                             <div class="col d-grid m-1">
-                                <a href="#" class="btn btn-success btn-lg">Pesan Sekarang!</a>
+                                <a href="https://api.whatsapp.com/send/?phone=6289613268434&text=Halo%20Admin%20Jemputan%20Gunung!%2C%0Asaya%20ingin%20memesan%20paket%20trip%20{{ urlencode(url("/trip/$paket->id")) }}%0A&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg">Pesan Sekarang!</a>
                             </div>
                         </div>
                     </div>

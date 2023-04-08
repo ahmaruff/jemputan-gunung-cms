@@ -19,6 +19,9 @@
             Kami percaya masih banyak sudut Indonesia yang perlu diapresiasi. Dengan semangat alam lestari, kami ingin memberi pesan bahwa
             mengagumi keindahan alam juga harus disertai dengan ikut andil dalam melestarikannya
         </p>
+        <h6 class="mt-5">
+            <a href="https://api.whatsapp.com/send/?phone=6285880435120&text=Halo%20Admin%20Jemputan%20Gunung!%2C%0A&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="text-decoration-none">Info lebih lanjut, hubungi kami</a>
+        </h6>
     </div>
 </section>
 

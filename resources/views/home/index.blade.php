@@ -122,7 +122,7 @@
                 <div class="col-md-6">
                     <h2 class="display-6 mb-4 fw-bold">Siap berpetualang?</h2>
                     <div class="d-grid">
-                        <a href="#" class="btn btn-lg btn-outline-info">Hubungi Kami</a>
+                        <a href="https://api.whatsapp.com/send/?phone=6285880435120&text=Halo%20Admin%20Jemputan%20Gunung!%2C%0A&type=phone_number&app_absent=0" class="btn btn-lg btn-outline-info">Hubungi Kami</a>
                     </div>
                 </div>
             </div>

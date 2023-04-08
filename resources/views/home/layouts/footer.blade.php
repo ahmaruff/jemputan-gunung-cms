@@ -8,9 +8,9 @@
         </div>
     
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-          <li class="ms-3"><a class="text-muted nav-link px-0" href="#">Twitter</a></li>
-          <li class="ms-3"><a class="text-muted nav-link px-0" href="#">Instagram</a></li>
-          <li class="ms-3"><a class="text-muted nav-link px-0" href="#">Facebook</a></li>
+          <li class="ms-3"><a class="text-muted nav-link px-0" href="https://www.tiktok.com/@jemputangunung1">Tiktok</a></li>
+          <li class="ms-3"><a class="text-muted nav-link px-0" href="https://www.instagram.com/jemputangunung/">Instagram</a></li>
+          <li class="ms-3"><a class="text-muted nav-link px-0" href="https://www.facebook.com/jemputangunung">Facebook</a></li>
         </ul>
       </footer>
 </section>

@@ -50,6 +50,7 @@
         <div class="card">
             <div class="card-body">
                 <h1 class="card-title">Latest Trip</h1>
+                @if ($paket)
                 <div class="row border p-2">
                     <div class="col">
                         <p class="text-primary m-0">Rp. {{ $paket->harga }}/pax</p>
@@ -60,6 +61,9 @@
                     {{-- <div class="col-sm-6 col-lg-2" style="background-image: url('{{asset('storage/trip/img/'.$paket->thumbnail)}}'); background-size: cover;">
                     </div> --}}
                 </div>
+                @else
+                <h3>Belum ada paket yang dibuat!</h3>
+                @endif
             </div>
         </div>
     </div>
@@ -69,6 +73,7 @@
         <div class="card">
             <div class="card-body">
                 <h1 class="card-title">Latest Blog</h1>
+                @if ($blog)
                 <div class="row border p-2">
                     <div class="col">
                         <p class="text-primary m-0">{{ $blog->category->category }}</p>
@@ -77,6 +82,9 @@
                         <a href="{{route('post.show', $blog->id)}}" class="btn btn-outline-primary">Detail</a>
                     </div>
                 </div>
+                @else
+                    <h3>Belum ada blog yang dibuat!</h3>
+                @endif
             </div>
         </div>
     </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\BlogPost;
+use App\Models\Faq;
 use App\Models\Paket;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -17,12 +19,20 @@ class AdminController extends Controller
         $user = Auth::user();
         $jml_paket = Paket::all()->count();
         $jml_admin = Admin::all()->count();
+        $jml_faq = Faq::all()->count();
+        $jml_blog = BlogPost::all()->count();
+        $paket = Paket::latest()->first();
+        $blog = BlogPost::latest()->first();
 
         $data = [
             'nama' => $user->nama,
             'email' => $user->email,
             'jml_paket' => $jml_paket,
             'jml_admin' => $jml_admin,
+            'jml_faq' => $jml_faq,
+            'jml_blog' => $jml_blog,
+            'paket' => $paket,
+            'blog' => $blog,
         ];
 
         return view('admin.dashboard', $data);
